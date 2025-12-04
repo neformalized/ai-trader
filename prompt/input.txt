@@ -1,0 +1,15 @@
+INPUT FORMAT:
+
+Fields are provided as arrays of equal length (the last element = the current bar).
+
+open: [...] # opening price  
+high: [...] # high price  
+low: [...] # low price  
+close: [...] # closing price  
+volume: [...] # trading volume
+
+Indicators are as arrays as well
+
+indicator description;
+[...]
+

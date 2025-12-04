@@ -1,0 +1,8 @@
+CURRENT SESSION STATISTICS:
+
+Avg. profit: {avg}% | Winrate: {winrate}%
+
+Your latest closed deals:
+Profit|Type|Conclusion
+{deals}
+Use this statistics to make more wisdom deals to increase YOUR winrate.
