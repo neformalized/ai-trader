@@ -1,11 +1,8 @@
 class Wallet:
     
-    def __init__(self, sl = 0.002, tp = 0.007):
+    def __init__(self, fee = 0.1):
         
-        self.fee = 0.0015
-        
-        self.stop_loss = sl
-        self.take_profit = tp
+        self.fee = fee/100
         
         self.deals = list()
         self.log = list()
@@ -34,12 +31,15 @@ class Wallet:
         #
     #
     
-    def open_deal(self, price, params):
+    def open_deal(self, price, stop_loss, take_profit, params):
+        
+        sl = stop_loss/100
+        tp = take_profit/100
         
         deal = {
             "price": price,
-            "sl": price - price * self.stop_loss,
-            "tp": price + price * self.take_profit,
+            "sl": price - price * sl,
+            "tp": price + price * tp,
             "params": params
         }
         

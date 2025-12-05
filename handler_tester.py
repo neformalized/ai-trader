@@ -12,8 +12,9 @@ step_timeout = 20
 #
 
 max_deals = 1
-stop_loss = 0.002
-take_profit = 0.01
+
+stop_loss = 0.2
+take_profit = 0.5
 
 # Open, High, Low, Close are necessary!!!
 candles = ["Open time", "Open", "High", "Low", "Close", "Volume", "Close time", "Quote", "Trade", "Buy base", "Buy quote", "Ignore"]
@@ -45,11 +46,7 @@ historical = history.History("C:\\Users\\omni\\Desktop\\history\\m\\", "C:\\User
 #
 
 agent = ai.Trader()
-
-wallet = wallet.Wallet(
-    sl = stop_loss,
-    tp = take_profit
-)
+wallet = wallet.Wallet()
 
 #
 
@@ -119,7 +116,7 @@ while True:
     
     #
     
-    #print(agent.messages[0]["content"])
+    print(agent.messages[0]["content"])
     #print(agent.messages[1]["content"])
     
     agent.show_usage()
@@ -130,7 +127,7 @@ while True:
         
         price = response["price"] if signal["deal"] == "buy" else (1 / response["price"])
         
-        wallet.open_deal(price, {"type": signal["deal"], "conclusion": signal["conclusion"], "confidence": signal["confidence"]})
+        wallet.open_deal(price, stop_loss, take_profit, {"type": signal["deal"], "conclusion": signal["conclusion"], "confidence": signal["confidence"]})
         
         #input("enter to continue:")
     #

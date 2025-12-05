@@ -9,7 +9,7 @@ class Trader:
         #
         
         self.model = "gpt-4.1-mini"
-        self.model_price = [.4, 1.6]
+        self.model_price = [.15, .6]
         self.tokens = {"input": 0, "output": 0}
         
         #
