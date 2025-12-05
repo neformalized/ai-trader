@@ -40,7 +40,7 @@ buf = buffer.Buffer(120, candles, indicators, ignores)
 #
 
 #client = candles.Candles()
-historical = history.History("C:\\Users\\omni\\Desktop\\trading\\history\\m\\", "C:\\Users\\omni\\Desktop\\trading\\history\\s\\", 121, 120)
+historical = history.History("C:\\Users\\omni\\Desktop\\history\\m\\", "C:\\Users\\omni\\Desktop\\history\\s\\", 121, 120)
 
 #
 
