@@ -6,6 +6,8 @@ class Trader:
     
     def __init__(self):
         
+        self.tries = 5
+        
         #
         
         self.model = "gpt-4.1-mini"
@@ -64,7 +66,7 @@ class Trader:
         prompt += "\n"
         prompt += 'For answer ALWAYS use json schema {"type": "signal"} or {"type": "pass"} that is necessary for backend.'
         
-        self.messages[-1]["content"] = prompt
+        self.messages[1]["content"] = prompt
     #
     
     def build_system_prompt(self, params):
@@ -104,25 +106,27 @@ class Trader:
         
         #
         
-        request = self.ai.responses.create(
-            model=self.model,
-            input=self.messages,
-            temperature=0.8
-        )
-        
-        
-        self.tokens["input"] += request.usage.input_tokens
-        self.tokens["output"] += request.usage.output_tokens
-        
-        return json.loads(request.output_text)
-        
-        """
-        
-        request = self.ai.inference(self.messages)
-        print(request)
-        return json.loads(request)
-        
-        """
+        while ((i := 0) < self.tries):
+            
+            request = self.ai.responses.create(
+                model=self.model,
+                input=self.messages
+            )
+            
+            self.tokens["input"] += request.usage.input_tokens
+            self.tokens["output"] += request.usage.output_tokens
+            
+            return json.loads(request.output_text)
+            
+            """
+            
+            request = self.ai.inference(self.messages)
+            print(request)
+            return json.loads(request)
+            
+            """
+            
+            i += 1
         #
     #
 #
