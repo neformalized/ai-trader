@@ -1,12 +1,14 @@
-OUTPUT FORMAT:
+﻿OUTPUT FORMAT:
 
 Only one response type is allowed − signal or pass ONLY in JSON format.
 
 Example of json schema for a signal:
 {
 	"type": "signal",
-	"conclusion": "shortest conclusion with the main reasons",
+	"conclusion": "short explanation why your dynamic TP has a higher probability of being reached before SL",
 	"deal": "buy" | "sell",
+	"take_profit": 0.3-2.0,
+	"stop_loss": 0.2-0.5,
 	"confidence": 0.5-1.0
 }
 
