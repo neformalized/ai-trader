@@ -117,7 +117,7 @@ while True:
     #
     
     print(agent.messages[0]["content"])
-    #print(agent.messages[1]["content"])
+    print(agent.messages[1]["content"])
     
     agent.show_usage()
     
@@ -125,11 +125,19 @@ while True:
     
     if signal["type"] == "signal":
         
+        for key in signal.keys():
+            
+            print(f"{key}: {signal[key]}")
+        #
+        
         price = response["price"] if signal["deal"] == "buy" else (1 / response["price"])
+        
+        stop_loss = signal["stop_loss"]
+        take_profit = signal["take_profit"]
         
         wallet.open_deal(price, stop_loss, take_profit, {"type": signal["deal"], "conclusion": signal["conclusion"], "confidence": signal["confidence"]})
         
-        #input("enter to continue:")
+        input("enter to continue:")
     #
 #
 end = time.time() - start
